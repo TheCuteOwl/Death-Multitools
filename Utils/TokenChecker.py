@@ -69,53 +69,6 @@ Language: {lang}
 Verified: {verified}
 Nitro: {has_nitro}
 """)
-"""
-def tokenInfo(token):
-    print(Colorate.Horizontal(Colors.blue_to_cyan,f'--------------------------------------------------------------------------------\nToken : {token} \n'))
-    headers = {'Authorization': token, 'Content-Type': 'application/json'}  
-    r = requests.get('https://discord.com/api/v6/users/@me', headers=headers)
-    if r.status_code == 200:
-            user_info = r.json()
-            username = user_info['username'] + '#' + user_info['discriminator']
-            ID = user_info['id']
-            phone = user_info['phone']
-            email = user_info['email']
-            mfa = user_info['mfa_enabled']
-            nitro = user_info['premium_since']            # Get server count
-            r = requests.get('https://discord.com/api/v6/users/@me/guilds', headers=headers)
-            if r.status_code == 200:
-                servers = r.json()
-                servers_count = len(servers)
-                if servers_count == 0:
-                    print(Colorate.Horizontal(Colors.blue_to_cyan,f'            [+]Server Number |  0 servers'))
-                else:
-                    print(Colorate.Horizontal(Colors.blue_to_cyan,f'            [+]Server Number |  {servers_count} servers'))
-
-            # Get friends count
-            r = requests.get('https://discord.com/api/v6/users/@me/friends', headers=headers)
-            if r.status_code == 200:
-                friends = r.json()
-                friends_count = len(friends)
-                if friends_count == 0:
-                    print(Colorate.Horizontal(Colors.blue_to_cyan,f'            [+]Friends        |  0 friends'))
-                else:
-                    print(Colorate.Horizontal(Colors.blue_to_cyan,f'            [+]Friends        |  {friends_count} friends'))
-            print(Colorate.Horizontal(Colors.blue_to_cyan,f'''
-            [+]User ID       |  {ID}
-
-            [+]User Name     |  {username}
-
-            [+]2 Factor Auth |  {mfa}
-
-            [+]Email         |  {email}
-
-            [+]Phone number  |  {phone if phone else "No number phone on the account"}
-            
-            [+]Token         |  {token}
-            
-            '''))
-"""
-
 with open("tokens.txt", "r") as file:
     tokens = [line.replace('\n', '') for line in file.readlines() if line != '\n']
     valid_tokens = []
